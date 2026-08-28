@@ -38,8 +38,7 @@ def main():
 
     parser.add_argument("-f", "--format", default=default_format,
                         help=f"Формат/качество (по умолчанию: {default_format})")
-    parser.add_argument("-c", "--cookies", metavar="BROWSER",
-                        help="Использовать куки из браузера")
+    parser.add_argument("-c", "--cookies", metavar="BROWSER",help="Использовать куки из браузера")
 
     if len(sys.argv) == 1:
         parser.print_help()
