@@ -22,7 +22,6 @@ def load_config():
     return config
 
 def main():
-    # Загружаем конфиг (пока только для формата по умолчанию)
     config = load_config()
     default_format = config.get("format", "bestvideo+bestaudio/best")
     parser.add_argument("url", help="Ссылка на видео/аудио/плейлист")
