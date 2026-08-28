@@ -24,6 +24,11 @@ def load_config():
 def main():
     config = load_config()
     default_format = config.get("format", "bestvideo+bestaudio/best")
+
+    parser = argparse.ArgumentParser(
+        description="VibeCrate — загрузчик медиа с YouTube, SoundCloud, TikTok",
+        epilog="Примеры:\n  vibecrate -you https://youtu.be/ и тд."
+    )
     parser.add_argument("url", help="Ссылка на видео/аудио/плейлист")
 
     group = parser.add_mutually_exclusive_group()
@@ -34,7 +39,7 @@ def main():
     parser.add_argument("-f", "--format", default=default_format,
                         help=f"Формат/качество (по умолчанию: {default_format})")
     parser.add_argument("-c", "--cookies", metavar="BROWSER",
-                        help="Использовать куки из браузера (например: firefox, chrome)")
+                        help="Использовать куки из браузера")
 
     if len(sys.argv) == 1:
         parser.print_help()
@@ -52,13 +57,12 @@ def main():
         cmd.extend(["--no-playlist", "-f", "bestvideo+bestaudio/best"])
     else:
         cmd.extend(["-f", args.format])
-
     if args.cookies:
         cmd.append(f"--cookies-from-browser={args.cookies}")
 
     cmd.append(args.url)
 
-    print(f"🚀 Загружаем: {args.url}")
+    print(f"Загружаем: {args.url}")
     try:
         subprocess.run(cmd, check=True)
         print(f"Готово! Файлы в ~/Downloads")
