@@ -6,6 +6,8 @@
 
 3.``makepkg -si``
 
+4.``vibecrate``
+
 ## dependencies
 
 ```dpkg,base-devel```
