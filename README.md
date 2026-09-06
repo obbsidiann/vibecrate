@@ -1,4 +1,4 @@
-##how to use 
+# how to use 
 
 1.``git clone https://github.com/obbsidiann/vibecrate``
 
